@@ -17,7 +17,7 @@ I created 100 data points including 2 random useless columns and adding some ran
 
 ```python
 # falling body: t = sqrt(2 * h / g)  where g is 9.8
-X = 100 * abs(np.random.randn(100, 2)) # h + 2 useless variables
+X = 100 * abs(np.random.randn(100, 3)) # h + 2 useless variables
 y = np.sqrt(2 * X[:, 0] / 9.8) + np.random.randn(100) # + a random error
 ```
 
@@ -25,15 +25,19 @@ The result was:
 
 ```python
 PySRRegressor.equations = [
-           pick     score                                           equation      loss  complexity
-        0        0.000000                                          3.8280957  3.960987           1
-        1        0.248942                                 (x0 * 0.038038906)  2.407549           3
-        2  >>>>  0.935639                          sqrt_abs(x0 * 0.21392302)  0.944566           4
-        3        0.007042           ((sqrt_abs(x0) + 0.6000069) * 0.4366105)  0.931357           6
-        4        0.005178             sqrt_abs((x0 * -0.21441233) + cos(x0))  0.926547           7
-        5        0.041718  ((sqrt_abs(x0 + -3.4519234) * 0.4204526) + 0.5...  0.888689           8
-        6        0.037596  sqrt_abs((x0 * -0.21530855) + sin(x1 * 1.62781...  0.855898           9
-        7        0.005490  sqrt_abs((x0 * 0.21296117) + (sin(x1 * -1.8019...  0.846552          11
+            pick     score                                           equation      loss  complexity
+        0         0.000000                                           3.867227  4.889949           1
+        1         0.452888                                 (x0 * 0.038884826)  1.976655           3
+        2   >>>>  0.575769                          sqrt_abs(x0 * 0.21829543)  1.111418           4
+        3         0.009650        ((sqrt_abs(x0) * 0.50124663) + -0.34722018)  1.090174           6
+        4         0.006606            ((sqrt_abs(x0) * 0.46379715) + inv(x1))  1.082995           7
+        5         0.021643        sqrt_abs(x0 * (exp(inv(x1)) * -0.21177335))  1.059808           8
+        6         0.007409   sqrt_abs(x0 * (exp(exp(inv(x1))) * -0.07769506))  1.051985           9
+        7         0.021338  (sqrt_abs(x0 * (exp(inv(x1)) * 0.25029796)) + ...  1.029775          10
+        8         0.020468  sqrt_abs((cos(sin(sin(x2 * 0.59266335))) * 0.2...  1.008913          11
+        9         0.056676  sqrt_abs((sqrt_abs(sqrt_abs(sin(exp(x1 * 0.232...  0.953322          12
+        10        0.011135  ((sqrt_abs(x0) + sin(cos(sqrt_abs(x0 * 4.90378...  0.942765          13
+        11        0.010939  ((sqrt_abs(x0) + sin(inv(cos(sqrt_abs(x0 * 4.7...  0.932509          14
 ```
 
 The most accurate one is marked with ">>>>". It correctly ignored the useless variables (x1, x2) and it found a constant of 0.21 which is quite close to 2 / 9.8 = 0.20.
