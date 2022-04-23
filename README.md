@@ -1,0 +1,2 @@
+# PySRTest
+Experiments with PySR
