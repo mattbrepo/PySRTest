@@ -9,11 +9,11 @@ Experiments with [PySR](https://github.com/MilesCranmer/PySR)
 I wanted to test PySR (High-Performance Symbolic Regression in Python) to see if it was capable to find known physics formulas from data.
 
 ## Example
-I considered the case of a [falling body](https://en.wikipedia.org/wiki/Equations_for_a_falling_body). In particular, the formula to calculate the time (_t_) taken for an object to fall distance (_d_):
+I considered the case of a [falling body](https://en.wikipedia.org/wiki/Equations_for_a_falling_body). In particular, the formula to calculate the time _t_ taken for an object to fall distance _d_:
 
 ![formula](/images/formula.jpg)
 
-I created 100 data points including 2 random useless columns and adding some random noise:
+I created 100 data points including 2 random useless columns and adding some random noise to _y_ (i.e., _t_):
 
 ```python
 # falling body: t = sqrt(2 * h / g)  where g is 9.8
