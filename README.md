@@ -6,7 +6,7 @@ Experiments with [PySR](https://github.com/MilesCranmer/PySR)
 **Start: 2022**
 
 ## Why
-I wanted to test PySR (High-Performance Symbolic Regression in Python) to see if it is capable to find known physics formulas from data.
+I wanted to test PySR (High-Performance Symbolic Regression in Python) to see if it was capable to find known physics formulas from data.
 
 ## Example
 I considered the case of a [falling body](https://en.wikipedia.org/wiki/Equations_for_a_falling_body). In particular, the formula to calculate the time (_t_) taken for an object to fall distance (_d_):
