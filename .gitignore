@@ -128,4 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-hall_of_fame_*.csv
+hall_of_fame_*
