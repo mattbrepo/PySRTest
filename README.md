@@ -11,9 +11,10 @@ I wanted to test PySR (High-Performance Symbolic Regression in Python) to see if
 ## Example
 I considered the case of a [falling body](https://en.wikipedia.org/wiki/Equations_for_a_falling_body). In particular, the formula to calculate the time _t_ taken for an object to fall distance _d_:
 
+$$ t = \sqrt{\frac{2d}{g}} $$
 ![formula](/images/formula.jpg)
 
-I created 100 data points including 2 random useless columns and adding some random noise to _y_ (i.e., _t_):
+I created 100 data points including 2 random useless columns and added some random noise to the _y_ (i.e., _t_):
 
 ```python
 # falling body: t = sqrt(2 * h / g)  where g is 9.8
@@ -21,7 +22,7 @@ X = 100 * abs(np.random.randn(100, 3)) # h + 2 useless variables
 y = np.sqrt(2 * X[:, 0] / 9.8) + np.random.randn(100) # + a random error
 ```
 
-The result was:
+The results were:
 
 ```python
 PySRRegressor.equations = [
@@ -40,4 +41,4 @@ PySRRegressor.equations = [
         11        0.010939  ((sqrt_abs(x0) + sin(inv(cos(sqrt_abs(x0 * 4.7...  0.932509          14
 ```
 
-The most accurate one is marked with ">>>>". It correctly ignored the useless variables (x1, x2) and it found a constant of 0.21 which is quite close to 2 / 9.8 = 0.20.
+The most accurate result is marked with ">>>>". It correctly ignored the useless variables (x1, x2) and it found a constant of 0.21 which is quite close to 2 / 9.8 = 0.20.
