@@ -1,5 +1,5 @@
 # PySRTest
-Experiments with [PySR](https://github.com/MilesCranmer/PySR)
+Experiments with [PySR](https://github.com/MilesCranmer/PySR).
 
 **Language: Python**
 
